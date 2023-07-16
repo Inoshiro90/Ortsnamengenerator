@@ -32,7 +32,16 @@
       usedNames.add(name);
       return name.charAt(0).toUpperCase() + name.slice(1);
     }
-
+    
+ // Copy to clipboard function
+    function copyToClipboard(text) {
+      const tempElement = document.createElement('textarea');
+      tempElement.value = text;
+      document.body.appendChild(tempElement);
+      tempElement.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempElement);
+    }
     // on-click events
     btnGenerate.addEventListener('click', (event) => {
       event.preventDefault();
@@ -66,11 +75,26 @@
       container.querySelectorAll('li').forEach((li) => li.remove());
     });
 
+  btnCopy.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      const container = document.getElementById('container');
+      const namesList = container.innerText;
+      
+      if (namesList) {
+        copyToClipboard(namesList);
+        alert('Die Liste wurde in die Zwischenablage kopiert.');
+      } else {
+        alert('Die Liste ist leer.');
+      }
+    });
+
     // append elements to the document body
     document.body.appendChild(document.createTextNode('Anzahl der Ortsnamen: '));
     document.body.appendChild(numNamesField);
     document.body.appendChild(btnGenerate);
     document.body.appendChild(btnClear);
+    document.body.appendChild(btnCopy); // Add the copy button
 
     // create a container for the results
     const container = document.createElement('ul');
