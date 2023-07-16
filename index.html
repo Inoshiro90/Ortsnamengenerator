@@ -14,13 +14,13 @@ const btnGenerate = document.createElement('button');
 btnGenerate.style.margin = '10px';
 btnGenerate.textContent = 'Generieren';
 
+const btnCopy = document.createElement('button'); // Create the new button
+btnCopy.textContent = 'In Zwischenablage kopieren'; // Set the text for the button
+btnCopy.style.margin = '10px'; // Add some margin to the button    
+
 const btnClear = document.createElement('button');
 btnClear.textContent = 'Löschen';
 btnClear.style.margin = '10px';
-
-const btnCopy = document.createElement('button'); // Create the new button
-btnCopy.textContent = 'In Zwischenablage kopieren'; // Set the text for the button
-btnCopy.style.margin = '10px'; // Add some margin to the button
 
     // generate name function
     function generateName(usedNames) {
